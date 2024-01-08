@@ -2,6 +2,12 @@ package stack;
 
 import java.util.*;
 
+/**
+ *  [ 효율성 ]
+ *  - 메모리: 35248KB
+ *  - 시간 : 440ms
+ */
+
 public class B10828_HuipyoHong {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
