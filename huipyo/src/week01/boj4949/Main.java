@@ -1,4 +1,4 @@
-package stack;
+package week01.boj4949;
 
 import java.util.*;
 
@@ -8,7 +8,7 @@ import java.util.*;
  *  - 시간 : 580ms
  */
 
-public class B4949_HuipyoHong {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
