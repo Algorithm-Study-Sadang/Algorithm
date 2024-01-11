@@ -9,11 +9,11 @@ import java.util.Deque;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Deque<Character> deque;
+        Deque<Character> deque = new ArrayDeque<>();
 
         int idx = 1;
          while (true) {
-             deque = new ArrayDeque<>();
+             deque.clear();
              String input = br.readLine();
 
              if (input.charAt(0) == '-')
