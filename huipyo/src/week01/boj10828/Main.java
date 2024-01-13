@@ -1,4 +1,4 @@
-package stack;
+package week01.boj10828;
 
 import java.util.*;
 
@@ -8,7 +8,7 @@ import java.util.*;
  *  - 시간 : 440ms
  */
 
-public class B10828_HuipyoHong {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
