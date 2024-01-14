@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+/**
+ * MEM  17MB
+ * TIME 172ms
+ */
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -56,10 +60,6 @@ public class Main {
     private static final int[][] dir = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
     private static void dfs(int[][] map, boolean[][] check, int y, int x) {
-        if (check[y][x]) {
-            return;
-        }
-
         check[y][x] = true;
 
         for (int i = 0; i < dir.length; i++) {
@@ -67,7 +67,7 @@ public class Main {
             int nx = x + dir[i][1]; // 다음 x 좌표
 
             // 사방으로 배추 흰나비 애벌레를 이동시키자
-            if (isIn(map, ny, nx) && map[ny][nx] == 1) {
+            if (isIn(map, ny, nx) && !check[ny][nx] && map[ny][nx] == 1) {
                 dfs(map, check, ny, nx);
             }
         }
