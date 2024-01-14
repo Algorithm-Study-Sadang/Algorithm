@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 /**
  * 	MEM     20MB
- * 	TIME    0.2s
+ * 	TIME    198ms
  */
 public class Main {
     private static final int MAX = 100001;
