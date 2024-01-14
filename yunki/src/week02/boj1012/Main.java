@@ -3,7 +3,7 @@ package week02.boj1012;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -20,6 +20,7 @@ public class Main {
 
             int[][] map = new int[Y][X];
             boolean[][] check = new boolean[Y][X];
+            ArrayList<int[]> searchPositions = new ArrayList<>();
 
             // 배추를 심어주자
             for (int i = 0; i < k; i++) {
@@ -28,16 +29,20 @@ public class Main {
                 int y = Integer.parseInt(coord[1]);
 
                 map[y][x] = 1;
+
+                // 콩심은 데 콩 나고 배추 심은데 배추난다.
+                searchPositions.add(new int[]{y, x});
             }
 
             int warms = 0;
-            for (int y = 0; y < Y; y++) {
-                for (int x = 0; x < X; x++) {
-                    // 안 간 곳이 있으면 지렁이를 푼다.
-                    if (!check[y][x] && map[y][x] == 1) {
-                        warms++;
-                        dfs(map, check, y, x);
-                    }
+            for (int[] pos : searchPositions) {
+                int y = pos[0];
+                int x = pos[1];
+
+                // 안 간 곳이 있으면 지렁이를 푼다.
+                if (!check[y][x]) {
+                    warms++;
+                    dfs(map, check, y, x);
                 }
             }
 
@@ -71,11 +76,5 @@ public class Main {
     private static boolean isIn(int[][] map, int y, int x) {
         return (0 <= y && y < map.length) && (0 <= x && x < map[0].length);
     }
-
-/*    private static void debugMap(int[][] map) {
-        for (int y = 0; y < map.length; y++) {
-            System.out.println(Arrays.toString(map[y]));
-        }
-    }*/
 }
 
