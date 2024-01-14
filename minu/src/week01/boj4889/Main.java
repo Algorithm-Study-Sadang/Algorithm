@@ -23,10 +23,10 @@ public class Main {
              for(int i = 0; i < input.length(); i++) {
                  char c = input.charAt(i);
                  if (c == '{') {
-                     deque.add(c);
+                     deque.push(c);
                  } else {
                      if (deque.isEmpty()) {
-                         deque.add('{');
+                         deque.push('{');
                          result++;
                      } else {
                          deque.pop();
