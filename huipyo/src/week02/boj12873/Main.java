@@ -1,6 +1,9 @@
 /**
  *  기념품
  *  https://www.acmicpc.net/problem/12873
+ *  [ 효율성 ]
+ *  - 메모리: 17972KB
+ *  - 시간 : 576ms
  */
 
 package week02.boj12873;
@@ -19,7 +22,8 @@ public class Main {
         int level = 1;
 
         while (queue.size() > 1) {
-            for (int i = 1; i < Math.pow(level, 3); i++) {
+            // 가지치기해서 비효율적인 회전은 줄인다
+            for (int i = 0; i < (Math.pow(level, 3) - 1) % queue.size(); i++) {
                 queue.offer(queue.poll());
             }
             level++;
