@@ -5,8 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/Algorithm.iml" filepath="$PROJECT_DIR$/Algorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/huipyo/huipyo.iml" filepath="$PROJECT_DIR$/huipyo/huipyo.iml" />
       <module fileurl="file://$PROJECT_DIR$/yoonsoo/yoonsoo.iml" filepath="$PROJECT_DIR$/yoonsoo/yoonsoo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minu/minu.iml" filepath="$PROJECT_DIR$/minu/minu.iml" />
       <module fileurl="file://$PROJECT_DIR$/yunki/yunki.iml" filepath="$PROJECT_DIR$/yunki/yunki.iml" />
-      <module fileurl="file://$PROJECT_DIR$/huipyo/huipyo.iml" filepath="$PROJECT_DIR$/huipyo/huipyo.iml" />
     </modules>
   </component>
 </project>
