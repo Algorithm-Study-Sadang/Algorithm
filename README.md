@@ -41,6 +41,12 @@
         1. 화상회의 플랫폼: 게더타운
         2. [접속링크](https://app.gather.town/app/0dutElic04Bk19jj/we%20can%20find%20can)
 
+2. 과제 코드 리뷰
+    - 유기농 배추 코드 리뷰
+        1. [홍희표 풀이](https://github.com/Algorithm-Study-Sadang/Algorithm/blob/main/huipyo/src/week02/boj1012/Main.java)
+        2. [백윤기 풀이](https://github.com/Algorithm-Study-Sadang/Algorithm/blob/main/yunki/src/week02/boj1012/Main.java)
+        3. [정민우 풀이](https://github.com/Algorithm-Study-Sadang/Algorithm/blob/main/minu2/src/week02/boj1012/Main.java)
+
 2. 발표내용
     - 주제: 깊이 우선 탐색(DFS)
     - 발표자: 백윤기
