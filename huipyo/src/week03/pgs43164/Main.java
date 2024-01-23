@@ -142,6 +142,6 @@ class PairStack {
     }
 
     public boolean isNotValidPath(String[][] tickets, int i) {
-        return (!indexIsEmpty()) && !tickets[indexPeek()][1].equals(tickets[i][0]);
+        return !indexIsEmpty() && !tickets[indexPeek()][1].equals(tickets[i][0]);
     }
 }
