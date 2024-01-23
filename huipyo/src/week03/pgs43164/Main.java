@@ -2,6 +2,7 @@ package week03.pgs43164;
 
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -53,55 +54,30 @@ public class Main {
     }
 }
 
-/*class Solution {
-    private static final String START = "ICN";
-
-    public List<String> solution(String[][] tickets) {
-        List<String> answer = new ArrayList<>();
-        Stack<Integer> stack = new Stack<>();
-        Stack<String> path = new Stack<>();
-        Consumer<Integer> backtracking = new Consumer<>() {
-            @Override
-            public void accept(Integer v) {
-                for (int i = 0; i < tickets.length; i++) {
-                    if (stack.contains(i) || (!stack.isEmpty() && !tickets[stack.peek()][1].equals(tickets[i][0]))) continue;
-                    stack.push(i);
-                    path.push(tickets[i][1]);
-                    if (stack.size() < tickets.length) accept(i);
-                    else System.out.println(stack + ", " + stack.stream().map(j -> Arrays.toString(tickets[j])).toList() + ", " + path);
-                    stack.pop();
-                    path.pop();
-                }
-            }
-        };
-
-        backtracking.accept(0);
-        answer.add("End");
-        return answer;
-    }
-}*/
-
 class Solution {
     private static final String START = "ICN";
 
     public List<String> solution(String[][] tickets) {
-        List<String> answer = new ArrayList<>();
         PairStack pairStack = new PairStack(START);
-        Consumer<Integer> backtracking = new Consumer<>() {
+        Stack<String> answer = new Stack<>();
+        Runnable backtracking = new Runnable() {
             @Override
-            public void accept(Integer v) {
+            public void run() {
                 for (int i = 0; i < tickets.length; i++) {
                     if (pairStack.indexContains(i) || pairStack.isNotValidPath(tickets, i)) continue;
                     pairStack.push(i, tickets[i][1]);
-                    if (pairStack.size() < tickets.length) accept(i);
-                    else System.out.println(pairStack.mIndexStack + ", " + pairStack.mIndexStack.stream().map(j -> Arrays.toString(tickets[j])).toList() + ", " + pairStack.mPathStack);
+                    if (pairStack.size() < tickets.length) run();
+                    else if (answer.isEmpty()) {
+                        //System.out.println(pairStack.mIndexStack + ", " + pairStack.mIndexStack.stream().map(j -> Arrays.toString(tickets[j])).toList() + ", " + pairStack.mPathStack);
+                        answer.addAll(pairStack.mPathStack);
+                    }
                     pairStack.pop();
                 }
             }
         };
 
-        backtracking.accept(0);
-        answer.add("End");
+        Arrays.sort(tickets, Comparator.comparing(o -> o[1]));
+        backtracking.run();
         return answer;
     }
 }
@@ -142,6 +118,6 @@ class PairStack {
     }
 
     public boolean isNotValidPath(String[][] tickets, int i) {
-        return !indexIsEmpty() && !tickets[indexPeek()][1].equals(tickets[i][0]);
+        return (!mPathStack.peek().equals(tickets[i][0])) || !indexIsEmpty() && !tickets[indexPeek()][1].equals(tickets[i][0]);
     }
 }
