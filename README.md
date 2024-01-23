@@ -48,7 +48,7 @@
         3. [정민우 풀이](https://github.com/Algorithm-Study-Sadang/Algorithm/blob/main/minu2/src/week02/boj1012/Main.java)
 
 2. 발표내용
-    - 주제: 깊이 우선 탐색(DFS)
+    - 주제: [깊이 우선 탐색(DFS)](https://github.com/Algorithm-Study-Sadang/Algorithm/blob/yunki/yunki/src/week02/README.md)
     - 발표자: 백윤기
 
 3. 문제풀이
