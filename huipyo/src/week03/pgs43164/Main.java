@@ -1,9 +1,6 @@
 package week03.pgs43164;
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -58,7 +55,7 @@ class Solution {
     private static final String START = "ICN";
 
     public List<String> solution(String[][] tickets) {
-        PairStack pairStack = new PairStack(START);
+        PairStack<Integer, String> pairStack = new PairStack<>(START);
         Stack<String> answer = new Stack<>();
         Runnable backtracking = new Runnable() {
             @Override
@@ -67,10 +64,7 @@ class Solution {
                     if (pairStack.indexContains(i) || pairStack.isNotValidPath(tickets, i)) continue;
                     pairStack.push(i, tickets[i][1]);
                     if (pairStack.size() < tickets.length) run();
-                    else if (answer.isEmpty()) {
-                        //System.out.println(pairStack.mIndexStack + ", " + pairStack.mIndexStack.stream().map(j -> Arrays.toString(tickets[j])).toList() + ", " + pairStack.mPathStack);
-                        answer.addAll(pairStack.mPathStack);
-                    }
+                    else if (answer.isEmpty()) answer.addAll(pairStack.getPathStack());
                     pairStack.pop();
                 }
             }
@@ -82,16 +76,16 @@ class Solution {
     }
 }
 
-class PairStack {
-    Stack<Integer> mIndexStack = new Stack<>();
+class PairStack<T, S> {
+    private final Stack<T> mIndexStack = new Stack<>();
 
-    Stack<String> mPathStack = new Stack<>();
+    private final Stack<S> mPathStack = new Stack<>();
 
-    public PairStack(String start) {
+    public PairStack(S start) {
         mPathStack.push(start);
     }
 
-    public void push(int idx, String path) {
+    public void push(T idx, S path) {
         mIndexStack.push(idx);
         mPathStack.push(path);
     }
@@ -105,19 +99,15 @@ class PairStack {
         return mIndexStack.size();
     }
 
-    public boolean indexIsEmpty() {
-        return mIndexStack.isEmpty();
-    }
-
-    public int indexPeek() {
-        return mIndexStack.peek();
-    }
-
-    public boolean indexContains(int index) {
+    public boolean indexContains(T index) {
         return mIndexStack.contains(index);
     }
 
     public boolean isNotValidPath(String[][] tickets, int i) {
-        return (!mPathStack.peek().equals(tickets[i][0])) || !indexIsEmpty() && !tickets[indexPeek()][1].equals(tickets[i][0]);
+        return !mPathStack.peek().equals(tickets[i][0]);
+    }
+
+    public Stack<S> getPathStack() {
+        return mPathStack;
     }
 }
