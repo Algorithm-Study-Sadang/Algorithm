@@ -47,18 +47,18 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
+                // 가지않았는데 bfs가 못 돌았다면 도달할 수 없는 지역
                 if (!visited[i][j]) {
-                    // 도달할 수 없는 지역
                     result[i][j] = -1;
                 }
                 System.out.print(result[i][j] + " ");
             }
             System.out.println();
         }
-
         br.close();
     }
 
+    // 갈 수 있는 곳까지 가면서 방문한지역 1씩 증가
     private static void bfs(int walkX, int walkY) {
         Deque<int[]> deque = new ArrayDeque<>();
         deque.add(new int[] {walkX, walkY});
@@ -71,9 +71,12 @@ public class Main {
                 int ny = now[1] + dy[i];
 
                 if(nx>=0 && nx< N && ny>=0 && ny<M) {
+                    // 가지않았고 갈수있는 땅이라면!
                     if(!visited[nx][ny] && area[nx][ny]==1) {
+                        // 방문
                         visited[nx][ny]=true;
-                        result[nx][ny]= result[now[0]][now[1]]+1;
+                        // 결과값에 + 1
+                        result[nx][ny]= result[now[0]][now[1]] + 1;
                         deque.add(new int[] {nx,ny});
                     }
                 }
