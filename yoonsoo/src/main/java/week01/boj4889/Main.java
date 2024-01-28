@@ -1,4 +1,4 @@
-package week01.boj4889;
+package main.java.week01.boj4889;
 
 import java.util.Scanner;
 import java.util.Stack;

@@ -2,8 +2,8 @@ package week03;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class Main {
 
@@ -16,6 +16,7 @@ public class Main {
             this.y = y;
         }
     }
+
     static int n;
     static int m;
     static int map[][];
@@ -63,8 +64,9 @@ public class Main {
     }
 
     public static void bfs(Pair start){
-
         Queue<Pair> st = new LinkedList<>();
+
+
         st.add(start);
         visited[start.x][start.y] = true;
         while(!st.isEmpty()){
